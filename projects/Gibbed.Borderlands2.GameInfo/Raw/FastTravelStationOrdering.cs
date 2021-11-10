@@ -36,6 +36,25 @@ namespace Gibbed.Borderlands2.GameInfo.Raw
         [JsonProperty(PropertyName = "dlc_expansion")]
         public string DLCExpansion { get; set; }
     }
+
+    [JsonObject(MemberSerialization.OptIn)]
+    internal sealed class Mission
+    {
+        [JsonProperty(PropertyName = "number")]
+        public int Number { get; set; }
+
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
+
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        [JsonProperty(PropertyName = "is_plot_critical")]
+        public bool IsPlotCritical { get; set; }
+
+        [JsonProperty(PropertyName = "can_be_failed")]
+        public bool CanBeFailed { get; set; }
+    }
 }
 
 #pragma warning restore 649

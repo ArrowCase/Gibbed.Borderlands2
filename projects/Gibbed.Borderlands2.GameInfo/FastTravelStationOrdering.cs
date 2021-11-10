@@ -34,4 +34,18 @@ namespace Gibbed.Borderlands2.GameInfo
         public List<FastTravelStationDefinition> Stations { get; internal set; }
         public DownloadableContentDefinition DLCExpansion { get; internal set; }
     }
+
+    public sealed class Mission
+    {
+        internal Mission()
+        {
+        }
+
+        public int Number { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public bool IsPlotCritical { get; set; }
+        public bool CanBeFailed { get; set; }
+    }
 }

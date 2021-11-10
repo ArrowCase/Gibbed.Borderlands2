@@ -185,6 +185,18 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Height="24"
+                               Source="Resources\fugue\document-binary.png" />
+                        <Label VerticalAlignment="Center"
+                               Content="Missions" />
+                    </StackPanel>
+                </TabItem.Header>
+                <ContentControl x:Name="Missions"
+                                IsEnabled="{Binding Path=SaveFile, Converter={StaticResource NullToBooleanConverter1}, ConverterParameter=true}" />
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="24"
                                Source="Resources\backpack.png" />
                         <Label VerticalAlignment="Center"
                                Content="{Binding Path=Backpack.Slots.Count}"

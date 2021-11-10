@@ -28,6 +28,38 @@ namespace Gibbed.Borderlands2.GameInfo.Loaders
 {
     internal static class FastTravelStationOrderingLoader
     {
+        public static InfoDictionary<Mission> LoadMissions()
+        {
+            try
+            {
+                var raws = LoaderHelper.DeserializeDump<Dictionary<string, Raw.Mission>>(
+                    "Missions");
+                return new InfoDictionary<Mission>(
+                    raws.ToDictionary(
+                        kv => kv.Key,
+                        kv => CreateMissionItem(kv)));
+            }
+            catch (Exception e)
+            {
+                throw new InfoLoadException("failed to load missions", e);
+            }
+        }
+
+        private static Mission CreateMissionItem(
+            KeyValuePair<string, Raw.Mission> kv)
+        {
+            var raw = kv.Value;
+            return new Mission()
+            {
+                Number = raw.Number,
+                Id = kv.Key,
+                Name = raw.Name,
+                Description = raw.Description,
+                IsPlotCritical = raw.IsPlotCritical,
+                CanBeFailed = raw.CanBeFailed
+            };
+        }
+
         public static InfoDictionary<FastTravelStationOrdering> Load(
             InfoDictionary<TravelStationDefinition> stations,
             InfoDictionary<DownloadableContentDefinition> downloadableContents)

@@ -26,6 +26,7 @@
     <EmbeddedResource Include="Resources\Dumps\Item Name Parts.json" />
     <EmbeddedResource Include="Resources\Dumps\Item Part Lists.json" />
     <EmbeddedResource Include="Resources\Dumps\Items.json" />
+    <EmbeddedResource Include="Resources\Dumps\Missions.json" />
     <EmbeddedResource Include="Resources\Dumps\Player Classes.json" />
     <EmbeddedResource Include="Resources\Dumps\Travel Stations.json" />
     <EmbeddedResource Include="Resources\Dumps\Weapon Balance.json" />

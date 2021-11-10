@@ -51,6 +51,7 @@ namespace Gibbed.Borderlands2.SaveEdit
         private BackpackViewModel _Backpack;
         private BankViewModel _Bank;
         private FastTravelViewModel _FastTravel;
+        private MissionsViewModel _Missions;
         private AboutViewModel _About;
 
         [Import(typeof(GeneralViewModel))]
@@ -134,6 +135,18 @@ namespace Gibbed.Borderlands2.SaveEdit
             {
                 this._FastTravel = value;
                 this.NotifyOfPropertyChange(nameof(FastTravel));
+            }
+        }
+
+        [Import(typeof(MissionsViewModel))]
+        public MissionsViewModel Missions
+        {
+            get { return this._Missions; }
+
+            set
+            {
+                this._Missions = value;
+                this.NotifyOfPropertyChange(nameof(Missions));
             }
         }
 
@@ -294,6 +307,7 @@ namespace Gibbed.Borderlands2.SaveEdit
             this.Backpack.ImportData(saveFile.SaveGame, saveFile.Platform);
             this.Bank.ImportData(saveFile.SaveGame, saveFile.Platform);
             this.FastTravel.ImportData(saveFile.SaveGame);
+            this.Missions.ImportData(saveFile.SaveGame);
             this.SavePath = null;
             this.SaveFile = saveFile;
             this.MaybeSwitchToGeneral();
@@ -365,6 +379,7 @@ namespace Gibbed.Borderlands2.SaveEdit
                         this.Backpack.ImportData(saveFile.SaveGame, saveFile.Platform);
                         this.Bank.ImportData(saveFile.SaveGame, saveFile.Platform);
                         this.FastTravel.ImportData(saveFile.SaveGame);
+                        this.Missions.ImportData(saveFile.SaveGame);
                         this.SavePath = fileName;
                         this.SaveFile = saveFile;
                         this.MaybeSwitchToGeneral();
@@ -597,6 +612,7 @@ namespace Gibbed.Borderlands2.SaveEdit
             this.Backpack.ExportData(saveFile.SaveGame, platform);
             this.Bank.ExportData(saveFile.SaveGame, platform);
             this.FastTravel.ExportData(saveFile.SaveGame);
+            this.Missions.ExportData(saveFile.SaveGame);
 
             if (saveFile.SaveGame != null &&
                 saveFile.SaveGame.WeaponData != null)

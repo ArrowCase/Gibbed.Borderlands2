@@ -109,7 +109,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
+    <None Remove="Tabs\MissionsView.xaml" />
     <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Tabs\MissionsView.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Target Name="RemoveBadReferencedAssemblies" AfterTargets="ResolveAssemblyReferences" Condition="'$(Configuration)'!='SaveEdit Packaging'">
     <ItemGroup>
